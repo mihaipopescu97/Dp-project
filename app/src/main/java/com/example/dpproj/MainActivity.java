@@ -58,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ids.clear();
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    ids.add(ds.getValue(String.class));
+                    for(DataSnapshot d : ds.getChildren()) {
+                        ids.add(d.getValue(String.class));
+                    }
                 }
                 adapter.notifyDataSetChanged();
             }
