@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private static class DownloadTask extends AsyncTask<String, Void, Void> {
-        static final String EXTENSION = ".jpg";
+        //static final String EXTENSION = ".jpg";
         WeakReference<MainActivity> weakReference;
         StorageReference storageReference;
 
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(String... strings) {
             final MainActivity activity = weakReference.get();
-            StorageReference reference = storageReference.child(strings[0] + EXTENSION);
+            StorageReference reference = storageReference.child(strings[0]);
             reference.getBytes(1024*1024)
                     .addOnSuccessListener(new OnSuccessListener<byte[]>() {
                         @Override
